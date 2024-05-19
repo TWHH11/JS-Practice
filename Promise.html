@@ -1,0 +1,28 @@
+<html>
+    <body>
+      
+    </body>
+    <script>
+        
+        let p= Promise.resolve(20);
+        p.then(data=>data*2)
+         .then(console.log)
+
+         let p2 = Promise.reject(10);
+         p2.then(data=>data+1,(error)=>{
+            console.log("p2 error");
+            return Promise.reject("return error")
+         })
+
+        .catch((error)=>{
+            console.log("catch error",error);
+                   return Promise.reject("return 2")})
+
+           .then(console.log,(error)=>console.log("last error",error));
+
+
+
+            
+    </script>
+
+</html>

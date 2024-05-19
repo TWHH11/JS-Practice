@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <title>Document</title>
+</head>
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.21.0/ramda.min.js">  </script>
+
+    <script>
+
+    let num = [1,1,1,2,2,3,3,3,1,1,2,4,5,4];
+
+    /*let group =R.groupBy(R.identity)(num);
+    console.log("Group",group);
+
+
+    let fre =R.countBy(R.identity)(num);
+    console.log("fre",fre);
+
+    let Arr = Object.entries(fre);
+    console.log("FreArr",Arr);
+
+    let SortArr = R.sort((a,b)=>(b[1]-a[1]))(Arr)
+    console.log("Sort",SortArr);
+
+    let SortNum = R.sort((a,b)=> (a-b))(num)
+    console.log("SortNum",SortNum);
+
+    SortArr = R.map(item=>item[0])(SortArr);
+    let topK = R.take(3,SortArr)
+    console.log("TopK",topK);*/
+
+    const log = R.tap(console.log);
+    
+    const topK = R.pipe (
+        R.countBy(R.identity),
+        log,
+        Object.entries,
+        log,
+        R.sort((a,b)=>(b[1]-a[1])),
+        R.map(item=>item[0]),
+        R.take(2),
+        log,
+    )
+
+    console.log("TopK",topK(num));
+
+    const ramdaFac = (n) => R.reduce(R.multiply,1 )(R.range(1,n+1));
+
+    const fact2 = (n)=> R.pipe(
+                        R.range(1,n+1),
+                        log,
+                        R.reduce(R.multiply,1 )
+        )(n);
+
+        console.log('RandomFa ',ramdaFac(4));
+        console.log('Fac2 ',fact2(4));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function payment(card) {
+            console.log('payment',card);
+        };
+
+        function another() {
+            console.log('another');
+        };
+
+        function onceandafter(fn,after) 
+        {
+            let dn = false;
+            return function (...rest)
+             {
+                if (!dn) {
+                    dn = true;
+                    return fn(...rest)
+                   
+                }
+                else{
+                    return after(...rest)
+                }
+
+             };
+        };
+
+       payment = onceandafter(payment, ()=> console.log("Payment have been done"));
+       payment('S');
+       payment('G');
+
+       another = onceandafter(another, ()=>console.log("Another have been done"));
+       another();
+       another();
+    </script>
+</body>
+
+</html>

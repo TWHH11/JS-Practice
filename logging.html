@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function payment(card)
+        {
+            console.log('Payment ',card);
+            return "success";
+            
+        }
+        function another()
+        {
+            console.log('Another');
+            
+        }
+        function PaymentFail(){
+            return "fail";
+        }
+
+        function logger(fn)
+        {
+            return function(...args)
+            {
+                console.log('Function ',fn.name, 'called with ',args);
+                let ret = fn(...args);
+                console.log('Function ',fn.name , ' return ',ret);
+                return ret;
+            }
+        }
+
+
+        const withLogger = (fn,log=console.log)=>(...args)=>{
+            log('Function ',fn.name, 'called with ',args);
+            let ret = fn(...args);
+            log('Function ',fn.name , ' return ',ret);
+            return ret;
+        }
+
+        let paymentWithLogger = withLogger(payment,console.warn)
+        let anotherWithLogger = withLogger(another)
+        let PFWithLogger = logger(PaymentFail)
+        paymentWithLogger('Card-A');
+        paymentWithLogger();
+        PFWithLogger();
+
+        anotherWithLogger();
+    </script>
+</body>
+</html>

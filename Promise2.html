@@ -1,0 +1,38 @@
+<html>
+    <body>
+      
+    </body>
+    <script>
+        
+       /*function div(a,b,c)
+       {
+        return new Promise((resolve,reject)=>
+        {
+            if(isNaN(a)|| isNaN(b))
+            {
+                reject('Error');
+            }else
+            {
+                resolve(a/b);
+            }
+        }
+       )}*/
+
+    div(10,5,(result)=>console.log("result",result ))
+
+ let p = new Promise((resolve,reject)=>{
+    // reject("something went wrong")
+    resolve(10)
+ });
+
+ p.then(data=>data*2,(error)=>0)
+  .then(console.log);
+
+div(10,2)
+.then(result=>console.log("success",result), error=>console.log("error",error))
+
+
+            
+    </script>
+
+</html>

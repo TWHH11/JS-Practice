@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let done = false;
+
+        //         function payment()
+        //         {
+        //             if(!done)
+        //             {
+        //                 console.log('Payment');
+        //                 done= true;
+        //             }
+
+
+        function payment(card) {
+            console.log('payment',card);
+        };
+
+        function another() {
+            console.log('another');
+        };
+
+        function once(fn) 
+        {
+            let dn = false;
+            return function (...rest)
+             {
+                if (!dn) {
+                    dn = true;
+                    return fn(...rest)
+                   
+                };
+
+             };
+        };
+
+       payment = once(payment);
+       payment('S');
+       payment('G');
+    </script>
+</body>
+
+</html>

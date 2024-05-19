@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       
+       function appendHi(msg)
+       {
+        return msg+ "hi"
+       }
+       
+       function toUpper(str)
+       {
+        return str.toUpperCase()
+       }
+       console.log(toUpper(appendHi("Jojo ")));
+
+       function compose(funcA,funcB)
+       {
+        return function(x)
+        {
+            return funcA(funcB(x))
+        }
+       }
+
+       const newFun = compose(toUpper,appendHi)
+       console.log(newFun("koko "));
+
+      let add = (x)=> x+1;
+      let double = (x)=> x*x;
+      let log = (x)=> console.log(x);
+
+      let resultFun = compose(log,compose(double,add))
+      console.log(resultFun(3));
+       
+       
+
+    </script>
+</body>
+</html>
